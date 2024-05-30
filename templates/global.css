@@ -1,0 +1,100 @@
+html,
+body,
+#root {
+  position: absolute !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
+  color: initial !important;
+  background: initial !important;
+  text-align: initial !important;
+  overflow: hidden !important;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --loader-width: 30px;
+  --loader-opacity: 1;
+}
+
+/* MoPub */
+.mp_center {
+  position: initial;
+  top: 0 !important;
+  left: 0 !important;
+  margin: 0 !important;
+  height: 100% !important;
+  width: 100% !important;
+  overflow: auto !important;
+}
+
+body {
+  color: #222;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+    sans-serif;
+  background: var(--color-background, #000000) !important;
+  overflow: hidden;
+}
+
+#root {
+  background: var(--color-background, #000000) !important;
+}
+
+#root::before {
+  position: absolute;
+  z-index: 10000;
+  content: '';
+  width: var(--loader-width);
+  height: var(--loader-width);
+  margin-top: calc(var(--loader-width) / 2 * -1);
+  margin-left: calc(var(--loader-width) / 2 * -1);
+  left: 50%;
+  top: 50%;
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  animation: rotate 2s linear infinite;
+  transform-origin: 50%;
+  transform: opacity linear 300ms;
+  opacity: var(--loader-opacity, #ffffff);
+  border: 3px solid var(--color-loader, #ffffff);
+  border-radius: 50%;
+  border-top-color: transparent;
+}
+#root.loaded::before {
+  display: none;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+button {
+  color: #222;
+  background-color: #f4f4f4;
+  outline: none;
+}
+
+button:disabled {
+  color: #999;
+}
+
+button:not(:disabled):active {
+  background-color: #ddd;
+}
+
+button:focus {
+  border-color: #666;
+}
